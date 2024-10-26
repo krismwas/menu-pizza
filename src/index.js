@@ -50,10 +50,33 @@ function App() {
   return (
     <div>
       <h1>Hello react !</h1>
+      <Header />
+      <Menu />
+
+      <Footer />
+    </div>
+  );
+}
+
+function Header() {
+  return <h1>Fast react pizza Co.</h1>;
+}
+
+function Menu() {
+  return (
+    <div>
+      <h1>Our menu</h1>
       <Pizza />
       <Pizza />
       <Pizza />
     </div>
+  );
+}
+
+function Footer() {
+  // return React.createElement("footer", null, "We're are currently open");
+  return (
+    <footer>{new Date().toLocaleTimeString()} We're are currently open</footer>
   );
 }
 
