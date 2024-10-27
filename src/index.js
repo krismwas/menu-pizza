@@ -68,7 +68,7 @@ function Header() {
 }
 
 function Menu() {
-  const pizzas = [];
+  const pizzas = pizzaData;
   const numPizzas = pizzas.length;
 
   return (
@@ -87,14 +87,14 @@ function Menu() {
   );
 }
 
-function Pizza(props) {
+function Pizza({ pizzaObj }) {
   return (
-    <li className="pizza">
-      <img src={props.pizzaObj.photoName} alt="pizza spinaci"></img>
+    <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
+      <img src={pizzaObj.photoName} alt="pizza spinaci"></img>
       <div>
-        <h3>{props.pizzaObj.name}</h3>
-        <p>{props.pizzaObj.ingredients}</p>
-        <span>{props.pizzaObj.price}</span>
+        <h3>{pizzaObj.name}</h3>
+        <p>{pizzaObj.ingredients}</p>
+        <span>{pizzaObj.soldOut ? "SOLD OUT" : pizzaObj.price}</span>
       </div>
     </li>
   );
@@ -121,12 +121,10 @@ function Footer() {
   );
 }
 
-function Order(props) {
+function Order({ closeHour }) {
   return (
     <div className="order">
-      <p>
-        We're open untill {props.closeHour}:00. Come visit us or order online
-      </p>
+      <p>We're open untill {closeHour}:00. Come visit us or order online</p>
       <button className="btn">order</button>
     </div>
   );
